@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <title>Predict Invitation</title>
+</head>
+<body>
+    <h1>Predict Invitation</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender" required><br>
+        <label for="occupation">Occupation:</label>
+        <input type="text" name="occupation" required><br>
+        <label for="past_attendance">Past Attendance:</label>
+        <input type="checkbox" name="past_attendance"><br>
+        <label for="social_media_followers">Social Media Followers:</label>
+        <input type="number" name="social_media_followers" required><br>
+        <label for="interest_in_music">Interest in Music:</label>
+        <input type="checkbox" name="interest_in_music"><br>
+        <label for="interest_in_art">Interest in Art:</label>
+        <input type="checkbox" name="interest_in_art"><br>
+        <label for="interest_in_technology">Interest in Technology:</label>
+        <input type="checkbox" name="interest_in_technology"><br>
+        <label for="distance_from_venue">Distance from Venue (km):</label>
+        <input type="number" name="distance_from_venue" step="0.1" required><br>
+        <label for="has_plus_one">Has Plus One:</label>
+        <input type="checkbox" name="has_plus_one"><br>
+        <button type="submit">Predict</button>
+    </form>
+    {% if invited is not None %}
+        <h2>Invitation Status: {{ invited|yesno:"Invited,Not Invited" }}</h2>
+    {% endif %}
+</body>
+</html>
